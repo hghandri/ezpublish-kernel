@@ -4,19 +4,19 @@
     "homepage": "http://share.ez.no",
     "license": "GPL-2.0",
     "suggest": {
-        "php-64bit": "For support of more than 30 languages, a 64bit php installation on all involved prod/dev machines is required"
+        "php-64bit": "For support of more than 30 languages, a 64bit php installation on all involved prod/dev machines is required",
+        "ext-intl": "Intl needed for internationalization support, without it you can only use English",
+        "ext-xsl": "XSL needed for XMLText/RichText field type"
     },
     "require": {
         "php": ">=5.3.3",
         "ext-ctype": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
-        "ext-intl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-PDO": "*",
         "ext-SPL": "*",
-        "ext-xsl": "*",
         "zetacomponents/archive": "dev-master#d0caff8",
         "zetacomponents/authentication": "dev-master#c422670",
         "zetacomponents/authentication-database-tiein": "dev-master#56d1e0a",
