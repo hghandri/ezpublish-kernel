@@ -2,7 +2,7 @@ language: php
 
 # run tests on php misc php versions
 php:
-  - 5.5
+  #- 5.5
   - hhvm
 
 # execute unit tests, integration test stubs and integration tests using legacy storage engine
@@ -10,10 +10,10 @@ env:
   global:
     - DB_NAME="testdb"
   matrix:
-    - TEST_CONFIG="phpunit.xml" TIMEZONE="Asia/Calcutta"
+    #- TEST_CONFIG="phpunit.xml" TIMEZONE="Asia/Calcutta"
     - TEST_CONFIG="phpunit.xml" TIMEZONE="America/New_York"
     - TEST_CONFIG="phpunit-integration-legacy.xml" TIMEZONE="Europe/Oslo"
-    - TEST_CONFIG="phpunit-integration-legacy.xml" DB="postgresql" DATABASE="pgsql://postgres@localhost/$DB_NAME" TIMEZONE="Asia/Calcutta"
+    #- TEST_CONFIG="phpunit-integration-legacy.xml" DB="postgresql" DATABASE="pgsql://postgres@localhost/$DB_NAME" TIMEZONE="Asia/Calcutta"
     - TEST_CONFIG="phpunit-integration-legacy.xml" DB="mysql" DATABASE="mysql://root@localhost/$DB_NAME" TIMEZONE="America/New_York"
     - SOLR_VERSION="4.6.1" TEST_CONFIG="phpunit-integration-legacy-solr.xml" TIMEZONE="America/New_York"
 
@@ -32,7 +32,7 @@ before_script:
   - "if [ \"$TEST_CONFIG\" = \"phpunit-integration-legacy-solr.xml\" ] ; then curl https://raw.github.com/moliware/travis-solr/master/travis-solr.sh | SOLR_CONFS=eZ/Publish/Core/Persistence/Solr/Content/Search/schema.xml bash ; fi"
 
 # execute phpunit as the script command
-script: "phpunit -d date.timezone=$TIMEZONE -d memory_limit=-1 -c $TEST_CONFIG"
+script: "phpunit -v --debug -d date.timezone=$TIMEZONE -d memory_limit=-1 -c $TEST_CONFIG"
 
 # disable mail notifications
 notification:
